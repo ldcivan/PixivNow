@@ -16,7 +16,7 @@
   "redirects": [
     {
       "source": "/-/:__PATH*",
-      "destination": "https://pximg.pro-ivan.com/:__PATH"
+      "destination": "https://pximg.pro-ivan.cn/:__PATH"
     }
   ],
   "headers": []
