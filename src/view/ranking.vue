@@ -1,6 +1,36 @@
 <template lang="pug">
 #ranking-view
   .body-inner
+    label
+      strong Mode
+      select(v-model="Mode")
+        option(value="daily") 日榜
+        option(value="weekly") 周榜
+        option(value="monthly") 月榜
+        option(value="daily_ai") AI日榜
+        option(value="rookie") 新人榜
+        option(value="original") 原创榜
+        option(value="male") 男性向
+        option(value="female") 女性向
+        option(value="daily_r18") 日榜·R18
+        option(value="weekly_r18") 周榜·R18
+        option(value="daily_ai_r18") AI日榜·R18
+        option(value="male_r18") 男性向·R18
+        option(value="female_r18") 女性向·R18
+    label
+      strong Content
+      select(v-model="Content")
+        option(value="") 综合
+        option(value="illust") 插画
+        option(value="ugoira") 动图
+        option(value="manga") 漫画  
+    label
+      strong Date
+      input(v-model='Date', type='text')
+      
+  
+    div
+      button(@click.prevent='router.push(`/ranking?mode=${Mode.value}&content=${Content.value}` + Date.value==''?``:`&date=${Date.value}`)') GO
     //- Error
     section(v-if='error')
       h1 排行榜加载失败
@@ -15,6 +45,7 @@
     //- Result
     section(v-if='list')
       h1 {{ list.date.toLocaleDateString('zh', { dateStyle: 'long' }) }}排行榜
+      说明 - ?mode = daily/weekly/monthly/daily_ai/rookie/original/male/female, ?content = illust/ugoira/manga, ?date
       ArtworkLargeList(:rank-list='list.contents')
 </template>
 
@@ -36,6 +67,10 @@ const list = ref<{
   contents: ArtworkRank[]
 } | null>(null)
 const route = useRoute()
+
+const Mode = ref('')
+const Content = ref('')
+const date = ref('')
 
 async function init(): Promise<void> {
   loading.value = true
