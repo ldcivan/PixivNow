@@ -85,14 +85,11 @@ async function init({
   loading.value = true
   try {
     const { p, mode, content, date } = route.query
-    date = strDate
-    content = Content
-    mode = Mode
     const searchParams = new URLSearchParams()
     if (p && typeof p === 'string') searchParams.append('p', p)
-    if (content && typeof content === 'string') searchParams.append('content', content)
-    if (mode && typeof mode === 'string') searchParams.append('mode', mode)
-    if (date && typeof date === 'string') searchParams.append('date', date)
+    if (Content && typeof Content === 'string') searchParams.append('content', Content)
+    if (Mode && typeof Mode === 'string') searchParams.append('mode', Mode)
+    if (strDate && typeof strDate === 'string') searchParams.append('date', strDate)
     searchParams.append('format', 'json')
     const { data } = await ajax.get<{
       date: string
