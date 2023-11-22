@@ -85,6 +85,7 @@ async function init({
   loading.value = true
   try {
     const { p, mode, content, date } = route.query
+    console.info(strDate, Content, Mode)
     const searchParams = new URLSearchParams()
     if (p && typeof p === 'string') searchParams.append('p', p)
     if (content && typeof content === 'string') searchParams.append('content', content)
