@@ -45,7 +45,7 @@
     //- Result
     section(v-if='list')
       h1 {{ list.date.toLocaleDateString('zh', { dateStyle: 'long' }) }}排行榜
-      说明 - ?mode = daily/weekly/monthly/daily_ai/rookie/original/male/female, ?content = illust/ugoira/manga, ?date
+      说明： Date填入纯数字，如2020年11月2日输入20201102
       ArtworkLargeList(:rank-list='list.contents')
 </template>
 
