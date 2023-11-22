@@ -125,6 +125,17 @@ effect(() =>
   )
 )
 
+// Refresh when the keyword changes
+router.afterEach((to, from) => {
+  console.log('after route', { to })
+  if (to.name === from.name && to !== from) {
+    strDate.value = route.params.strDate as string
+    Mode.value = route.params.Mode as string
+    Content.value = route.params.Content as string
+    init()
+  }
+})
+
 onMounted(() => {
   init()
 })
