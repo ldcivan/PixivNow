@@ -5,6 +5,11 @@ mixin repoLink
 #about-view.body-inner
   h1#top 关于我们
   section.intro
+    Card(title='写在前面')
+      p 您现在访问的是一个来自Pro-Ivan的Fork，我们只在原有基础上做了一些小改进；若有错误发生请找原作者。
+      p 请不要分享本网站，不要整天想着当中国英雄，自己使用就好。
+      p 以上，是本fork运行者的留言；以下保留原作者留言。
+  
     Card(title='简介')
       p PixivNow - Now, everyone can enjoy Pixiv!
       p 现在，每个人都能享受 Pixiv！
