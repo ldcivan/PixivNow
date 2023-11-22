@@ -67,6 +67,7 @@ const list = ref<{
   contents: ArtworkRank[]
 } | null>(null)
 const route = useRoute()
+const router = useRouter()
 
 const Mode = ref('')
 const Content = ref('')
@@ -113,7 +114,7 @@ async function init(): Promise<void> {
   }
 }
 
-async function gotoURL() {
+function gotoURL() {
   router.push(`/ranking?mode=${Mode.value}&content=${Content.value}` + strDate.value==''?``:`&date=${strDate.value}`)
 }
 
