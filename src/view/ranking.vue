@@ -127,11 +127,6 @@ effect(() =>
 )
 
 onBeforeRouteUpdate(async (to) => {
-  const params = route.params as {
-    strDate.value?: string
-    Content.value?: string
-    Mode.value?: string
-  }
   await init(strDate.value, Content.value, Mode.value)
 })
 onMounted(() => {
