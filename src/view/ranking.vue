@@ -125,13 +125,7 @@ effect(() =>
   )
 )
 
-// Refresh when the keyword changes
 onBeforeRouteUpdate(async (to) => {
-  const params = to.params as {
-    strDate?: string
-    Content?: string
-    Mode?: string
-  }
   init()
 })
 
