@@ -73,10 +73,21 @@ const Mode = ref('')
 const Content = ref('')
 const strDate = ref('')
 
-async function init(): Promise<void> {
+async function init({
+  strDate,
+  Content,
+  Mode,
+}: {
+  strDate?: string
+  Content?: string
+  Mode?: string
+}): Promise<void> {
   loading.value = true
   try {
     const { p, mode, content, date } = route.query
+    date = strDate
+    content = Content
+    mode = Mode
     const searchParams = new URLSearchParams()
     if (p && typeof p === 'string') searchParams.append('p', p)
     if (content && typeof content === 'string') searchParams.append('content', content)
@@ -122,11 +133,20 @@ effect(() =>
 )
 
 onBeforeRouteUpdate(async (to) => {
-  init()
+  const params = route.params as {
+    strDate?: string
+    Content?: string
+    Mode?: string
+  }
+  await init(params)
 })
-
-onMounted(async () => {
-  await init()
+onMounted(() => {
+  const params = route.params as {
+    strDate?: string
+    Content?: string
+    Mode?: string
+  }
+  init(params)
 })
 </script>
 
