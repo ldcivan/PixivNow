@@ -88,9 +88,9 @@ async function init({
     console.info(strDate, Content, Mode)
     const searchParams = new URLSearchParams()
     if (p && typeof p === 'string') searchParams.append('p', p)
-    if (content && typeof content === 'string') searchParams.append('content', content)
-    if (mode && typeof mode === 'string') searchParams.append('mode', mode)
-    if (date && typeof date === 'string') searchParams.append('date', date)
+    if (Content && typeof Content === 'string') searchParams.append('content', Content)
+    if (Mode && typeof Mode === 'string') searchParams.append('mode', Mode)
+    if (strDate && typeof strDate === 'string') searchParams.append('date', strDate)
     searchParams.append('format', 'json')
     const { data } = await ajax.get<{
       date: string
@@ -132,17 +132,17 @@ effect(() =>
 
 onBeforeRouteUpdate(async (to) => {
   const params = route.params as {
-    strDate?: string
-    Content?: string
-    Mode?: string
+    strDate.value?: string
+    Content.value?: string
+    Mode.value?: string
   }
   await init(params)
 })
 onMounted(() => {
   const params = route.params as {
-    strDate?: string
-    Content?: string
-    Mode?: string
+    strDate.value?: string
+    Content.value?: string
+    Mode.value?: string
   }
   init(params)
 })
