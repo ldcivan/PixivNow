@@ -113,8 +113,8 @@ async function init(): Promise<void> {
   }
 }
 
-function gotoURL() {
-  router.push(`/ranking?mode=${Mode.value}&content=${Content.value}` + Date.value==''?``:`&date=${Date.value}`)
+async function gotoURL() {
+  router.push(`/ranking?mode=${Mode.value}&content=${Content.value}` + strDate.value==''?``:`&date=${strDate.value}`)
 }
 
 effect(() =>
