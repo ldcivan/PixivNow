@@ -30,7 +30,7 @@
       
   
     div
-      button(@click.prevent='router.push(`/ranking?mode=${Mode.value}&content=${Content.value}` + Date.value==''?``:`&date=${Date.value}`)') GO
+      button(@click.prevent='gotoURL') GO
     //- Error
     section(v-if='error')
       h1 排行榜加载失败
@@ -111,6 +111,10 @@ async function init(): Promise<void> {
   } finally {
     loading.value = false
   }
+}
+
+function gotoURL() {
+  router.push(`/ranking?mode=${Mode.value}&content=${Content.value}` + Date.value==''?``:`&date=${Date.value}`)
 }
 
 effect(() =>
