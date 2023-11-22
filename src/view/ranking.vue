@@ -126,11 +126,13 @@ effect(() =>
 )
 
 // Refresh when the keyword changes
-router.afterEach((to, from) => {
-  console.log('after route', { to })
-  if (to.name === from.name && to !== from) {
-    init()
+onBeforeRouteUpdate(async (to) => {
+  const params = to.params as {
+    strDate?: string
+    Content?: string
+    Mode?: string
   }
+  init()
 })
 
 onMounted(() => {
