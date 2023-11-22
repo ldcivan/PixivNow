@@ -57,7 +57,7 @@ import Placeholder from '@/components/Placeholder.vue'
 import type { ArtworkRank } from '@/types'
 import { getCache, setCache } from './siteCache'
 import { ajax } from '@/utils/ajax'
-import { effect,useRouter,onBeforeRouteUpdate } from 'vue'
+import { effect,onBeforeRouteUpdate } from 'vue'
 import { setTitle } from '@/utils/setTitle'
 
 const error = ref('')
