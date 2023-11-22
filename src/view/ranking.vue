@@ -126,6 +126,9 @@ effect(() =>
 )
 
 onBeforeRouteUpdate(async (to) => {
+  if (to.name !== 'ranking') {
+    return
+  }
   init()
 })
 
