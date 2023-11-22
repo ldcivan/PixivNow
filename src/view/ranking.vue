@@ -83,11 +83,6 @@ async function init({
   Mode?: string
 }): Promise<void> {
   loading.value = true
-  list.value = getCache('ranking.rankingList')
-  if (list.value) {
-    loading.value = false
-    return
-  }
   try {
     const { p, mode, content, date } = route.query
     const searchParams = new URLSearchParams()
