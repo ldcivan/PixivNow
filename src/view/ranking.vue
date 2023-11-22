@@ -125,7 +125,7 @@ onBeforeRouteUpdate(async (to) => {
   init()
 })
 
-onMounted(() => {
+onMounted(async () => {
   await init()
 })
 </script>
