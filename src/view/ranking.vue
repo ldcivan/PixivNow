@@ -2,8 +2,9 @@
 #ranking-view
   .body-inner
     label
-      strong Mode
+      strong Mode：
       select(v-model="Mode")
+        option(value="") 默认·其实就是日榜
         option(value="daily") 日榜
         option(value="weekly") 周榜
         option(value="monthly") 月榜
@@ -18,15 +19,15 @@
         option(value="male_r18") 男性向·R18
         option(value="female_r18") 女性向·R18
     label
-      strong Content
+      strong Content：
       select(v-model="Content")
         option(value="") 综合
         option(value="illust") 插画
         option(value="ugoira") 动图
         option(value="manga") 漫画  
     label
-      strong Date（int, e.g. 2nd. Nov. 2020 --> 20201102）
-      input(v-model='Date', type='text')
+      strong Date（int, e.g. 2nd. Nov. 2020 --> 20201102）：
+      input(v-model='strDate', type='text')
       
   
     div
@@ -69,7 +70,7 @@ const route = useRoute()
 
 const Mode = ref('')
 const Content = ref('')
-const date = ref('')
+const strDate = ref('')
 
 async function init(): Promise<void> {
   loading.value = true
