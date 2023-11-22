@@ -2,7 +2,7 @@
 .search-box
   input(
     @keyup.enter='makeSearch'
-    placeholder='输入关键词搜索/输入 id:数字 查看作品'
+    placeholder='输入关键词搜索/输入 id:数字 查看作品/输入 user:数字 查看作者'
     v-model='keyword'
   )
   IFasSearch.icon(data-icon)
@@ -20,6 +20,10 @@ function makeSearch(): void {
   }
   if (/^id:(\d+)$/.test(keyword.value)) {
     router.push(`/artworks/${/^id:(\d+)$/.exec(keyword.value)?.[1]}`)
+    return
+  }
+  else if (/^user:(\d+)$/.test(keyword.value)) {
+    router.push(`/users/${/^id:(\d+)$/.exec(keyword.value)?.[1]}`)
     return
   }
   router.push(`/search/${encodeURIComponent(keyword.value)}/1`)
