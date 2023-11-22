@@ -57,7 +57,7 @@ import Placeholder from '@/components/Placeholder.vue'
 import type { ArtworkRank } from '@/types'
 import { getCache, setCache } from './siteCache'
 import { ajax } from '@/utils/ajax'
-import { effect,onBeforeRouteUpdate } from 'vue'
+import { effect } from 'vue'
 import { setTitle } from '@/utils/setTitle'
 
 const error = ref('')
@@ -73,7 +73,15 @@ const Mode = ref('')
 const Content = ref('')
 const strDate = ref('')
 
-async function init(): Promise<void> {
+async function init({
+  strDate,
+  Content,
+  Mode,
+}: {
+  strDate?: string
+  Content?: string
+  Mode?: string
+}): Promise<void> {
   loading.value = true
   list.value = getCache('ranking.rankingList')
   if (list.value) {
@@ -81,9 +89,10 @@ async function init(): Promise<void> {
     return
   }
   try {
-    const { p, mode, date } = route.query
+    const { p, mode, content, date } = route.query
     const searchParams = new URLSearchParams()
     if (p && typeof p === 'string') searchParams.append('p', p)
+    if (content && typeof content === 'string') searchParams.append('content', content)
     if (mode && typeof mode === 'string') searchParams.append('mode', mode)
     if (date && typeof date === 'string') searchParams.append('date', date)
     searchParams.append('format', 'json')
@@ -126,11 +135,21 @@ effect(() =>
 )
 
 onBeforeRouteUpdate(async (to) => {
-  await init()
+  const params = route.params as {
+    strDate?: string
+    Content?: string
+    Mode?: string
+  }
+  await init(params)
 })
 
 onMounted(() => {
-  init()
+  const params = route.params as {
+    strDate?: string
+    Content?: string
+    Mode?: string
+  }
+  init(params)
 })
 </script>
 
