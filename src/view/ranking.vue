@@ -73,15 +73,11 @@ const Mode = ref('')
 const Content = ref('')
 const strDate = ref('')
 
-async function init({
+async function init(
   strDate,
   Content,
   Mode,
-}: {
-  strDate?: string
-  Content?: string
-  Mode?: string
-}): Promise<void> {
+): Promise<void> {
   loading.value = true
   try {
     const { p, mode, content, date } = route.query
@@ -136,15 +132,10 @@ onBeforeRouteUpdate(async (to) => {
     Content.value?: string
     Mode.value?: string
   }
-  await init(params)
+  await init(strDate.value, Content.value, Mode.value)
 })
 onMounted(() => {
-  const params = route.params as {
-    strDate.value?: string
-    Content.value?: string
-    Mode.value?: string
-  }
-  init(params)
+  init(strDate.value, Content.value, Mode.value)
 })
 </script>
 
