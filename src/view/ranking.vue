@@ -122,11 +122,11 @@ effect(() =>
 )
 
 onBeforeRouteUpdate(async (to) => {
-  await init()
+  init()
 })
 
 onMounted(() => {
-  init()
+  await init()
 })
 </script>
 
