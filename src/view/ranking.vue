@@ -25,7 +25,7 @@
         option(value="ugoira") 动图
         option(value="manga") 漫画  
     label
-      strong Date
+      strong Date（int, e.g. 2nd. Nov. 2020 --> 20201102）
       input(v-model='Date', type='text')
       
   
@@ -45,7 +45,6 @@
     //- Result
     section(v-if='list')
       h1 {{ list.date.toLocaleDateString('zh', { dateStyle: 'long' }) }}排行榜
-      说明： Date填入纯数字，如2020年11月2日输入20201102
       ArtworkLargeList(:rank-list='list.contents')
 </template>
 
