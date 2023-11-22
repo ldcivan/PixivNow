@@ -87,9 +87,9 @@ async function init({
     const { p, mode, content, date } = route.query
     const searchParams = new URLSearchParams()
     if (p && typeof p === 'string') searchParams.append('p', p)
-    if (Content && typeof Content === 'string') searchParams.append('content', Content)
-    if (Mode && typeof Mode === 'string') searchParams.append('mode', Mode)
-    if (strDate && typeof strDate === 'string') searchParams.append('date', strDate)
+    if (content && typeof content === 'string') searchParams.append('content', content)
+    if (mode && typeof mode === 'string') searchParams.append('mode', mode)
+    if (date && typeof date === 'string') searchParams.append('date', date)
     searchParams.append('format', 'json')
     const { data } = await ajax.get<{
       date: string
@@ -118,8 +118,8 @@ async function init({
   }
 }
 
-function gotoURL() {
-  router.push(`/ranking?mode=${Mode.value}&content=${Content.value}` + (strDate.value==''?``:`&date=${strDate.value}`))
+async function gotoURL() {
+  await router.push(`/ranking?mode=${Mode.value}&content=${Content.value}` + (strDate.value==''?``:`&date=${strDate.value}`))
 }
 
 effect(() =>
