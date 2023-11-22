@@ -23,7 +23,7 @@ function makeSearch(): void {
     return
   }
   else if (/^user:(\d+)$/.test(keyword.value)) {
-    router.push(`/users/${/^id:(\d+)$/.exec(keyword.value)?.[1]}`)
+    router.push(`/users/${/^user:(\d+)$/.exec(keyword.value)?.[1]}`)
     return
   }
   router.push(`/search/${encodeURIComponent(keyword.value)}/1`)
