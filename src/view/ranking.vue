@@ -73,7 +73,7 @@ const Mode = ref('')
 const Content = ref('')
 const strDate = ref('')
 
-function init() {
+async function init(): Promise<void> {
   loading.value = true
   list.value = getCache('ranking.rankingList')
   if (list.value) {
@@ -129,9 +129,6 @@ effect(() =>
 router.afterEach((to, from) => {
   console.log('after route', { to })
   if (to.name === from.name && to !== from) {
-    strDate.value = route.params.strDate as string
-    Mode.value = route.params.Mode as string
-    Content.value = route.params.Content as string
     init()
   }
 })
