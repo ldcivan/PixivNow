@@ -73,7 +73,7 @@ const Mode = ref('')
 const Content = ref('')
 const strDate = ref('')
 
-async function init(): Promise<void> {
+function init() {
   loading.value = true
   list.value = getCache('ranking.rankingList')
   if (list.value) {
