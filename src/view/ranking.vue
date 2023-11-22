@@ -73,13 +73,8 @@ const Mode = ref('')
 const Content = ref('')
 const strDate = ref('')
 
-async function init(update): Promise<void> {
+async function init(): Promise<void> {
   loading.value = true
-  list.value = getCache('ranking.rankingList')
-  if (list.value&&!update) {
-    loading.value = false
-    return
-  }
   try {
     const { p, mode, content, date } = route.query
     const searchParams = new URLSearchParams()
@@ -127,11 +122,11 @@ effect(() =>
 )
 
 onBeforeRouteUpdate(async (to) => {
-  await init(true)
+  await init()
 })
 
 onMounted(() => {
-  init(false)
+  init()
 })
 </script>
 
